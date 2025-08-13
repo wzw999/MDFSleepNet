@@ -4,7 +4,6 @@ from os import path
 from scipy import signal
 from scipy.signal import butter
 from scipy.signal.windows import hamming  # Corrected import
-from sklearn.preprocessing import StandardScaler
 
 # path_Extracted = './datasets/ISRUC/ISRUC_S1/ExtractedChannels/'
 # path_RawData   = './datasets/ISRUC/ISRUC_S1/RawData/'
@@ -17,14 +16,9 @@ channels = ['C3_A2', 'C4_A1', 'F3_A2', 'F4_A1', 'O1_A2', 'O2_A1',
 
 
 def read_psg(path_Extracted, sub_id, channels, resample=None, expected_duration=30, fs=100):
-    """
-    读取PSG数据，确保时间长度一致性
-    :param resample: 如果为None，则根据expected_duration和fs计算
-    :param expected_duration: 期望的每个epoch时长（秒）
-    :param fs: 采样率
-    """
+
     if resample is None:
-        resample = expected_duration * fs  # 确保采样点数与时间长度匹配
+        resample = expected_duration * fs 
         
     psg = scio.loadmat(path.join(path_Extracted, 'subject%d.mat' % (sub_id)))
     psg_use = []
@@ -74,7 +68,6 @@ def split_segments(data, labels, segment_length, target_length, fs):
     split_data = []
     split_labels = []
     
-    # 创建汉明窗
     hamming_window = hamming(samples_per_target)
 
     for i in range(data.shape[0]):
@@ -83,7 +76,6 @@ def split_segments(data, labels, segment_length, target_length, fs):
             end = start + samples_per_target
             segment = data[i, :, start:end]
             
-            # 对每个通道应用汉明窗
             for ch in range(segment.shape[0]):
                 segment[ch, :] = segment[ch, :] * hamming_window
                 
@@ -136,40 +128,14 @@ for sub in range(8,9):
     psg_preprocessed = np.concatenate([eeg_data, eog_data, emg_data], axis=1)
     
     # 验证数据维度
-    expected_samples = 30 * fs  # 30秒 * 采样率
+    expected_samples = 30 * fs  
     num_segments = len(label)
     
-    print(f"Before reshaping: {psg_preprocessed.shape}")
-    print(f"Expected: ({num_segments}, {len(channels)}, {expected_samples})")
-    
-    # 检查数据是否已经是正确的形状
     if psg_preprocessed.shape == (num_segments, len(channels), expected_samples):
         print("✓ Data is already in correct shape, no reshaping needed")
-        # 数据已经是正确的形状，不需要重塑
     else:
-        # 需要重塑数据
-        print(f"Reshaping data from {psg_preprocessed.shape} to ({num_segments}, {len(channels)}, -1)")
-        
-        # 验证总样本数是否匹配
-        total_samples_current = psg_preprocessed.shape[0] * psg_preprocessed.shape[1] * psg_preprocessed.shape[2]
-        total_samples_expected = num_segments * len(channels) * expected_samples
-        
-        if total_samples_current != total_samples_expected:
-            print(f"WARNING: Total sample count mismatch!")
-            print(f"Current total samples: {total_samples_current}")
-            print(f"Expected total samples: {total_samples_expected}")
-            print(f"Difference: {total_samples_current - total_samples_expected}")
-        
         psg_preprocessed = psg_preprocessed.reshape(num_segments, len(channels), -1)
     
-    # 最终验证
-    print(f"Final data shape: {psg_preprocessed.shape}")
-    if psg_preprocessed.shape[2] != expected_samples:
-        print(f"ERROR: Samples per segment mismatch: {psg_preprocessed.shape[2]} vs {expected_samples}")
-        print(f"This suggests a fundamental data structure issue!")
-    else:
-        print(f"✓ Data structure validated: {num_segments} epochs, {len(channels)} channels, {expected_samples} samples per epoch")
-
     split_data = psg_preprocessed
     split_labels = np.eye(5)[label]
 

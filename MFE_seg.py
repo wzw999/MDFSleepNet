@@ -86,7 +86,6 @@ print("keras version:", keras.__version__)
 
 tf.config.set_soft_device_placement(True)
 
-# 获取所有可用的 GPU 设备
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
     try:
@@ -99,7 +98,6 @@ if gpus:
 else:
     print("No GPUs available. Using CPU for computations.")
 
-# 验证当前使用的设备
 print("Current device:", tf.config.get_visible_devices('GPU'))
 
 

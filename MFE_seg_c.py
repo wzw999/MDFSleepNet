@@ -50,7 +50,7 @@ subject_num = len(Fold_Num_30)
 fold = 10
 seg_30 = 30
 seg_3 = 3
-seg_1 = 5
+seg_1 = 1
 seg_5 = 5
 seg_10 = 10
 seg_15 = 15
@@ -101,7 +101,6 @@ print("keras version:", keras.__version__)
 
 tf.config.set_soft_device_placement(True)
 
-# 获取所有可用的 GPU 设备
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:
     try:
@@ -114,7 +113,6 @@ if gpus:
 else:
     print("No GPUs available. Using CPU for computations.")
 
-# 验证当前使用的设备
 print("Current device:", tf.config.get_visible_devices('GPU'))
 
 
@@ -300,7 +298,6 @@ for i in range(fold):  # 20-fold
         AllPred = np.concatenate((AllPred, AllPred_fusion))
         AllTrue = np.concatenate((AllTrue, AllTrue_fusion))
     
-    # 5. 清理内存
     del ce_model_1s, ce_model_30s
     del train_data_1s, train_targets_1s, val_data_1s, val_targets_1s
     del train_data_30s, train_targets_30s, val_data_30s, val_targets_30s

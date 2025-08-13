@@ -30,8 +30,8 @@ class kFoldGenerator():
         for p in range(self.k): # 0~24 25
             if p != i:
                 for j in range(fold_len):
-                    subject_idx = p * fold_len + j  # 修正索引计算
-                    if subject_idx >= len(self.x_list):  # 添加边界检查
+                    subject_idx = p * fold_len + j  
+                    if subject_idx >= len(self.x_list): 
                         break
                     if isFirst:
                         train_data = self.x_list[subject_idx] # 1. sub1,2
@@ -42,8 +42,8 @@ class kFoldGenerator():
                         train_targets = np.concatenate((train_targets, self.y_list[subject_idx]))
             else:
                 for j in range(fold_len):
-                    subject_idx = p * fold_len + j  # 修正索引计算
-                    if subject_idx >= len(self.x_list):  # 添加边界检查
+                    subject_idx = p * fold_len + j  
+                    if subject_idx >= len(self.x_list):  
                         break
                     if isValFirst:
                         val_data = self.x_list[subject_idx] # 1. sub0
