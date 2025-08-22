@@ -1,6 +1,6 @@
 # MDFSleepNet
 
-Multi-scale Deep Feature Fusion Sleep Stage Classification Network
+code for "Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring"
 
 ## Overview
 
