@@ -1,2 +1,2 @@
 code for "Sleep Stage Specificity to Window Length Variations:
-An Efficient Fusion Strategy for Enhanced Scoring"
+An Decision Fusion Strategy for Enhanced Scoring"
