@@ -1,6 +1,7 @@
 # MDFSleepNet
 
-code for "Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring"
+code for "Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring" (Accepted by Journal of Biomedical and Health Informatics (JBHI))
+
 
 ## Overview
 
