@@ -57,3 +57,12 @@ The model classifies 5 sleep stages:
 - `Utils.py`: Utility functions for evaluation and visualization
 - `DataGenerator.py`: Data loading and k-fold cross-validation
 - `utils/`: Dataset preprocessing scripts
+
+## Citation
+@article{wang2026sleep,
+  title={Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring},
+  author={Wang, Zhaowen and Zhou, Dongdong and Xu, Qi and Cong, Fengyu and Al-Sa'd, Mohammad and Raitoharju, Jenni},
+  journal={IEEE Journal of Biomedical and Health Informatics},
+  year={2026},
+  publisher={IEEE}
+}
