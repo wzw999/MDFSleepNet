@@ -59,6 +59,7 @@ The model classifies 5 sleep stages:
 - `utils/`: Dataset preprocessing scripts
 
 ## Citation
+   ```bash
 @article{wang2026sleep,
   title={Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring},
   author={Wang, Zhaowen and Zhou, Dongdong and Xu, Qi and Cong, Fengyu and Al-Sa'd, Mohammad and Raitoharju, Jenni},
@@ -66,3 +67,4 @@ The model classifies 5 sleep stages:
   year={2026},
   publisher={IEEE}
 }
+   ```
