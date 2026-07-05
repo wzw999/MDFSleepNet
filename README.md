@@ -60,11 +60,14 @@ The model classifies 5 sleep stages:
 
 ## Citation
    ```bash
-@article{wang2026sleep,
-  title={Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring},
+@ARTICLE{11460134,
   author={Wang, Zhaowen and Zhou, Dongdong and Xu, Qi and Cong, Fengyu and Al-Sa'd, Mohammad and Raitoharju, Jenni},
-  journal={IEEE Journal of Biomedical and Health Informatics},
+  journal={IEEE Journal of Biomedical and Health Informatics}, 
+  title={Sleep Stage Specificity to Window Length Variations: A Decision Fusion Strategy for Enhanced Scoring}, 
   year={2026},
-  publisher={IEEE}
-}
+  volume={},
+  number={},
+  pages={1-13},
+  keywords={Filtering;Filters;Band-pass filters;Active filters;Notch filters;System-on-chip;Wireless Access in Vehicular Environments;Internet;Protocols;Electronic mail;Sleep stage scoring;multi-scale temporal analysis;polysomnography;window length optimization;fusion strategy},
+  doi={10.1109/JBHI.2026.3679942}}
    ```
